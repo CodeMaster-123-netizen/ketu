@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MCN Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,33 +14,41 @@
         }
 
         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             background: linear-gradient(to right, #2c3e50, #3498db);
             color: white;
-            padding: 2rem;
+            padding: 1rem;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
         }
 
         nav {
             background-color: rgba(0,0,0,0.1);
-            padding: 1.5rem;
-            margin-top: 1rem;
+            padding: 1rem;
+            margin-top: 0.5rem;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 2rem;
+            margin: 0 1.5rem;
             padding: 0.5rem 1rem;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
         nav a:hover {
             background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
         }
 
         main {
+            margin-top: 120px;
             padding: 3rem;
             min-height: calc(100vh - 200px);
             background-color: #f5f6fa;
@@ -69,16 +78,48 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            padding: 1rem;
         }
 
         .service-card {
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 8px;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.2);
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0;
         }
 
         footer {
@@ -90,48 +131,682 @@
             bottom: 0;
             width: 100%;
         }
+
+        footer p {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+            transition: opacity 0.3s;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
+
+        /* Section Spacing */
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        /* Hero Section Buttons */
+        .hero-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #3498db;
+            color: #3498db;
+        }
+
+        .btn-outline:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-details {
+            margin-top: 1.5rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: none;
+            font-size: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-to-top:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .scroll-to-top.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Make button smaller on mobile */
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* General Responsive Layout */
+        @media (max-width: 1024px) {
+            /* iPad and smaller */
+            .content-section {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns for iPad */
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile devices */
+            header {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                padding: 1rem 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                display: block;
+                margin: 0.3rem 0;
+                padding: 0.8rem;
+                background: rgba(255,255,255,0.1);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr; /* Single column for mobile */
+                gap: 1rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-card img {
+                width: 60px;
+                height: 60px;
+            }
+
+            /* Contact form responsive */
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 0.7rem;
+            }
+
+            /* Hero buttons responsive */
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Footer responsive */
+            footer {
+                padding: 1.5rem 1rem;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* iPad Specific Adjustments */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            nav {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                margin: 0.5rem 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Additional Mobile Optimizations */
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            p {
+                font-size: 0.95rem;
+            }
+
+            .service-card {
+                margin: 0.5rem 0;
+            }
+
+            .content-section {
+                margin: 0.5rem;
+                padding: 1rem;
+            }
+        }
+
+        /* Ensure smooth scrolling on all devices */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Better touch targets for mobile */
+        @media (max-width: 768px) {
+            button,
+            .btn,
+            nav a {
+                min-height: 44px; /* Apple's recommended minimum touch target size */
+                min-width: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Improved form elements for mobile */
+        @media (max-width: 768px) {
+            input,
+            textarea,
+            select {
+                font-size: 16px; /* Prevents iOS zoom on focus */
+            }
+
+            .contact-form {
+                gap: 0.8rem;
+            }
+        }
+
+        /* Icon styles for navigation */
+        nav a i {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+
+        /* Icon styles for service cards */
+        .service-card i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Contact details icons */
+        .contact-details i {
+            color: #3498db;
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Footer icons */
+        footer i {
+            margin-right: 8px;
+        }
+
+        /* Social media icons if needed */
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .social-icons a:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav a i {
+                margin-right: 10px;
+                font-size: 1.2em;
+            }
+
+            .service-card i {
+                font-size: 2rem;
+            }
+        }
+
+        /* Responsive adjustments for sticky header */
+        @media (max-width: 768px) {
+            header {
+                padding: 0.5rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            nav {
+                padding: 0.5rem;
+            }
+
+            nav a {
+                display: block;
+                margin: 0.3rem 0;
+                padding: 0.8rem;
+                text-align: center;
+            }
+
+            main {
+                margin-top: 200px;
+            }
+        }
+
+        /* Animation for header shadow on scroll */
+        header.scrolled {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        /* Updated Services Grid Styles */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            padding: 1rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.2);
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-card i {
+                font-size: 2rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        /* Stagger the animation for each card */
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to Digital Solutions</h1>
+        <h1>Welcome to MCN Solutions</h1>
         <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
+            <a href="#home"><i class="fas fa-home"></i> Home</a>
+            <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#services"><i class="fas fa-cogs"></i> Services</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
         </nav>
     </header>
 
     <main>
-        <section class="content-section">
+        <!-- Home Section -->
+        <section id="home" class="content-section">
+            <h2>Welcome to MCN Solutions</h2>
+            <p>Your trusted partner in digital transformation. We deliver innovative solutions that drive business growth and success.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn">Our Services</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="content-section">
             <h2>About Us</h2>
-            <p>Welcome to Digital Solutions, where innovation meets excellence. We are a dedicated team of professionals committed to delivering high-quality digital services to businesses worldwide. With over a decade of experience, we understand what it takes to succeed in the digital landscape.</p>
+            <p>Welcome to MCN Solutions, where innovation meets excellence. We are a dedicated team of professionals committed to delivering high-quality digital services to businesses worldwide. With over a decade of experience, we understand what it takes to succeed in the digital landscape.</p>
             
+            <h3>Our Mission</h3>
+            <p>To empower businesses with cutting-edge digital solutions that drive growth and innovation.</p>
+            
+            <h3>Our Vision</h3>
+            <p>To be the leading digital transformation partner for businesses globally, known for excellence and innovation.</p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="content-section">
             <h2>Our Services</h2>
             <div class="services-grid">
                 <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
                     <h3>Web Development</h3>
-                    <p>Custom websites and web applications built with the latest technologies to help your business grow online.</p>
+                    <p>Custom websites and web applications built with the latest technologies for seamless user experience and optimal performance.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Digital Marketing</h3>
-                    <p>Strategic marketing solutions to increase your brand visibility and reach your target audience effectively.</p>
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile App Development</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android, delivering powerful mobile solutions.</p>
                 </div>
                 <div class="service-card">
+                    <i class="fas fa-paint-brush"></i>
                     <h3>UI/UX Design</h3>
-                    <p>User-centered design solutions that create engaging and intuitive digital experiences for your customers.</p>
+                    <p>User-centered design solutions creating intuitive and engaging digital experiences for your customers.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Cyber Security</h3>
+                    <p>Comprehensive security solutions to protect your digital assets and ensure data safety with advanced protocols.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Solutions</h3>
+                    <p>Scalable cloud infrastructure and services to modernize your business operations and enhance efficiency.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Industry Training</h3>
+                    <p>Professional training programs in latest technologies, preparing talents for industry-level challenges.</p>
                 </div>
             </div>
+        </section>
 
-            <h2>Why Choose Us?</h2>
-            <p>We pride ourselves on delivering innovative solutions, maintaining clear communication throughout projects, and ensuring customer satisfaction. Our team stays up-to-date with the latest industry trends to provide you with cutting-edge solutions.</p>
+        <!-- Contact Section -->
+        <section id="contact" class="content-section">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>We'd love to hear from you. Contact us for any inquiries or collaboration opportunities.</p>
+                    <div class="contact-details">
+                        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> deepak.tewatia@mcnsolutions.com</p>
+                        <p><i class="fas fa-phone"></i> <strong>Phone:</strong> 91-120-4256016</p>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> MCN Solutions, G-41, Second Floor, Sector-63, Noida, Uttar Pradesh, India</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Digital Solutions. All rights reserved.</p>
-        <p>Contact us: info@digitalsolutions.com | Phone: (555) 123-4567</p>
+        <p><i class="far fa-copyright"></i> 2024 MCN Solutions. All rights reserved.</p>
+        <div class="footer-contact">
+            <p><i class="fas fa-envelope"></i> deepak.tewatia@mcnsolutions.com</p>
+            <p><i class="fas fa-phone"></i> 91-120-4256016</p>
+        </div>
     </footer>
+
+    <!-- Add this button just before the closing body tag -->
+    <button id="scrollToTop" class="scroll-to-top">
+        ↑
+    </button>
+
+    <!-- Add this script just before the closing body tag -->
+    <script>
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        // Show button when user scrolls down 300px
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+    <!-- Optional: Add social media icons in footer -->
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <!-- Add this script for enhanced header behavior -->
+    <script>
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 0) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
